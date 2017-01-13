@@ -176,8 +176,8 @@ class EspaceButtons(BoxLayout):
     pass
 class EspaceInstructions(RelativeLayout):
     pass
-class JeuRobertoApp(App):
+class JeuApp(App):
     def build(self):
         return Interface()
         
-JeuRobertoApp().run()
+JeuApp().run()
