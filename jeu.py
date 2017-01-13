@@ -25,8 +25,13 @@ class Cache1(DragBehavior,RelativeLayout):
         #####access the reference of  a carte and collide 
         if self.parent.ref_carte1.collide_point(*touch.pos):
             self.parent.ref_carte1.alpha_color=0.5
-            position_inside_relative_layout = self.parent.ref_carte1.children[0].pos
-            position_in_absolute_terms = self.parent.ref_carte1.children[0].to_window(*position_inside_relative_layout)
+            ##### grab the gridlayout widget inside the Carte1
+            the_carte1_gridlayout = self.parent.ref_carte1.children[0]
+            ##### grab the position of this gridlayout
+            position_inside_relative_layout = the_carte1_gridlayout.pos
+            ##### convert the position to absolute coordinates as Carte1 uses relativelayout
+            position_in_absolute_terms = self.the_carte1_gridlayout.to_window(*position_inside_relative_layout)
+            ##### assign the position
             self.pos = position_in_absolute_terms
         else:
             self.parent.ref_carte1.alpha_color=0
