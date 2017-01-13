@@ -1,0 +1,204 @@
+
+<Carte1>:
+    #longueur_cote: 180
+    longueur_cote:0
+    # a color property to indicate when the card is overposed by a cache
+    alpha_color:0
+
+    GridLayout:
+	    cols:3
+	    size_hint:None,None
+	    size:self.parent.longueur_cote,self.parent.longueur_cote
+
+        # center the Gridlayout
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+
+
+        #Here is the trick of the highlight
+	    canvas.after:
+		    Line:
+                rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+                width: 3
+            Color:
+                rgba: 1,1,0,self.parent.alpha_color	
+            Rectangle:
+                pos: self.x, self.y
+                size: self.width,self.height
+            Color:
+                rgba: 1,1,1,1	
+
+        Image:
+            source: 'oiseau.png'
+        Label:
+            text: ''
+        Image:
+            source: 'coccinelle.png'
+        Image:
+            source: 'pingouin.png'
+        Image:
+            source: 'poisson.png'
+        Image:
+            source: 'pingouin.png'
+        Image:
+            source: 'cochon.png'
+        Image:
+            source: 'coccinelle.png'
+        Image:
+            source: 'oiseau.png'
+
+
+
+<Carte2>:
+	longueur_cote:0
+    # a color property to indicate when the card is overposed by a cache
+    alpha_color:0
+	GridLayout:
+		cols:3
+		size_hint:None,None
+		size:self.parent.longueur_cote,self.parent.longueur_cote
+		#center the Gridlayout
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+		
+		canvas.after:
+			Line:
+                rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+                width: 3
+            Color:
+                rgba: 1,1,0,self.parent.alpha_color	
+            Rectangle:
+                pos: self.x, self.y
+                size: self.width,self.height
+            Color:
+                rgba: 1,1,1,1
+		Image:
+			source:
+				'poisson.png'
+		Label:
+			text:''
+		Image:
+			source:
+				'coccinelle.png'
+		Label:
+			text:''
+		Image:
+			source:
+				'pingouin.png'
+		
+		Image:
+			source:
+				'oiseau.png'
+		Image:
+			source:
+				'coccinelle.png'		
+		Image:
+			source:
+				'cochon.png'
+		Image:
+			source:'poisson.png'
+			
+					
+			
+					
+<Carte3>:
+	longueur_cote:0
+    # a color property to indicate when the card is overposed by a cache
+    alpha_color:0
+	GridLayout:
+		cols:3
+		size_hint:None,None
+		size:self.parent.longueur_cote,self.parent.longueur_cote
+		#center the Gridlayout
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+		canvas.after:
+			Line:
+                rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+                width: 3
+            Color:
+                rgba: 1,1,0,self.parent.alpha_color	
+            Rectangle:
+                pos: self.x, self.y
+                size: self.width,self.height
+            Color:
+                rgba: 1,1,1,1	
+		Image:
+			source:
+				'cochon.png'
+		Image:		
+			source:
+				'oiseau.png'
+		Image:
+			source:
+				'pingouin.png'
+		Image:
+			source:
+				'poisson.png'
+		Label:
+			text:''
+		Image:		
+			source:
+				'poisson.png'
+		Image:
+			source:
+				'coccinelle.png'
+		Label:
+			text:''
+		Image:
+			source:
+				'cochon.png'
+		
+		
+		
+			
+<Carte4>:
+	longueur_cote:0
+    # a color property to indicate when the card is overposed by a cache
+    alpha_color:0
+	GridLayout:
+		cols:3
+		size_hint:None,None
+		size:self.parent.longueur_cote,self.parent.longueur_cote
+		#center the Gridlayout
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+		canvas.after:
+			Line:
+                rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+                width: 3
+            Color:
+                rgba: 1,1,0,self.parent.alpha_color	
+            Rectangle:
+                pos: self.x, self.y
+                size: self.width,self.height
+            Color:
+                rgba: 1,1,1,1	
+		Label:
+			text:''
+		Label:
+			text:''
+		Label:
+			text:''	
+		Label:
+			text:''	
+		Image:
+			source:
+				'cochon.png'
+		Image:
+			source:
+				'coccinelle.png'
+		Image:
+			source:
+				'poisson.png'
+		Image:
+			source:
+				'oiseau.png'
+		Image:
+			source:
+				'pingouin.png'
+		
+		
+		
+		
+					
+			
+							
+			

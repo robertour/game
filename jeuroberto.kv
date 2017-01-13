@@ -1,0 +1,287 @@
+<Interface>:
+	AnchorLayout:
+		anchor_x:'left'
+		anchor_y:'top'
+		EspaceJeu:
+			# Espace contenant les cartes
+			id:id_EspaceJeu
+            size_hint: .65,.7
+			Carte1:
+                longueur_cote: id_EspaceOutils.height
+                id: id_carte1
+			Carte2:
+				longueur_cote: id_EspaceOutils.height
+                id: id_carte2
+			Carte3:
+				longueur_cote: id_EspaceOutils.height
+                id: id_carte3
+			Carte4:
+				longueur_cote: id_EspaceOutils.height
+                id: id_carte4
+
+    AnchorLayout:
+		anchor_x:'right'
+		anchor_y:'top'
+		BoxLayout:
+			orientation:'vertical'
+			size_hint:.35,.7
+			EspaceInstructions:
+				size_hint:1,.7
+				
+				BoxLayout:
+					orientation: 'vertical'
+					Label:
+						text:'Répartir les caches sur les cartes'+'\n'+'de façon à résoudre le problème'+'\n'+'posé' 
+					Button:
+						text:'Problème'
+						size_hint:.5,.5
+						pos_hint:{'center_x': 0.5}
+						on_press:root.choisir_un_probleme()
+					Label:
+					    id:id_texte_probleme
+						text:''
+					Button:
+						text:'Solution'
+						size_hint:.5,.5
+						pos_hint:{'center_x': 0.5}
+						on_press:root.afficher_solution_du_probleme()
+					Label:
+						id:id_texte_solution
+						text:'' 
+            EspaceButtons:
+			# Espace contenant les boutons "rotation"
+				size_hint: 1,.3
+            	ref_Cache1: id_Cache1
+            	ref_Cache2: id_Cache2
+            	ref_Cache3: id_Cache3
+            	ref_Cache4: id_Cache4
+				
+	
+        
+				
+	AnchorLayout:
+		anchor_x:'center'
+		anchor_y:'bottom'
+		EspaceOutils:
+
+            ##### Let's add a reference to the cartes so we can collide when we
+            ##### drag the cache. 
+            ##### I will add them in Espace Outils so the caches can access
+            # J'ajoute une référence aux cartes
+            ##### through their parent self. parent
+            ref_carte1: id_carte1
+            ref_carte2: id_carte2
+            ref_carte3: id_carte3
+            ref_carte4: id_carte4
+
+			# Espace contenant les outils cad les caches
+			id:id_EspaceOutils
+			# Je matérialise par un rectangle la layer EspaceOutils qui est une BoxLayout
+			canvas.before:
+                Color:
+					#rgba: 0,.5,.5,.75 pour avoir du vert foncé
+					rgb:0,0,0 # pour avoir du noir
+	            Rectangle:
+		            pos:self.x,self.y
+            		size:self.width, self.height
+                Color:
+                    rgb: 1,1,1
+			spacing:10
+			orientation:'horizontal'
+
+			size_hint: None,.3
+			# On determine la largeur de la layer EspaceOutils : 4 caches et 3 espaces
+            width: self.height*4 + 3 * self.spacing 
+            # on positionne le centre de la layer EspaceOutils au centre (0.5) de l'AnchorLayout 
+            pos_hint: {'center_x': 0.5}
+
+
+			Cache1:
+				id:id_Cache1
+				# Je fais en sorte que Cache1 soit carré avec longueur du coté égale à la hauteur du parent 
+				size_hint:None,None
+				width:self.parent.height
+				height:self.parent.height					
+                drag_rectangle:self.x,self.y,self.width,self.height
+	            drag_distance:0
+				canvas.after: 
+					Color:
+						rgb:1,1,1
+					Line:
+            			rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+            			width: 1
+ 
+				
+			Cache2:
+				id:id_Cache2
+				# Je fais en sorte que Cache2 soit carré avec longueur du coté égale à la hauteur du parent
+				size_hint:None,None
+				width:self.parent.height
+				height:self.parent.height					
+                drag_rectangle:self.x,self.y,self.width,self.height
+				drag_distance:0
+				canvas.after:
+					Color:
+						rgb:1,1,1
+					Line:
+            			rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+            			width: 1
+			
+			Cache3:
+				id:id_Cache3
+				# Je fais en sorte que Cache3 soit carré avec longueur du coté égale à la hauteur du parent
+				size_hint:None,None
+				width:self.parent.height
+				height:self.parent.height					
+                drag_rectangle:self.x,self.y,self.width,self.height
+				drag_distance:0
+				canvas.after:
+					Color:
+						rgb:1,1,1
+					Line:
+            			rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+            			width: 1
+			Cache4:
+				id:id_Cache4
+                #Je fais en sorte que Cache4 soit carré avec longueur du coté égale à la hauteur du parent
+				size_hint:None,None
+				width:self.parent.height
+				height:self.parent.height					
+                drag_rectangle:self.x,self.y,self.width,self.height
+				drag_distance:0
+				canvas.after:
+					Color:
+						rgb:1,1,1
+					Line:
+            			rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+            			width: 1
+
+<EspaceJeu>:
+    ##### colums for the GridLayout
+    cols: 2
+
+    canvas.before:
+	    Color:
+		    rgba:0.7,0.8,0,0.75
+	    Rectangle:
+            ##### IMPORTANT: since EspaceJeu is not a RelativeLayout, then we 
+            ##### we need to use self.x and self.y as coordinates for the 
+            ##### the rectangle
+		    pos:self.x,self.y
+    		size:self.width, self.height
+        Color:
+		    rgb:1,1,1
+
+
+<EspaceButtons>:
+    
+	orientation: 'vertical'
+	padding:10
+    canvas:
+	    Color:
+		    #rgba:1,0,0,0.75 pour avoir un rectangle rouge
+		    rgb:0,0,0
+	    Rectangle:
+		    pos:self.x,self.y
+    		size:self.width, self.height
+    Label:
+    	text:'Tourner le cache'
+    	size_hint:1,.2	
+    GridLayout:
+    	cols:2	
+    	size_hint:1,.8
+		Button:
+			text:'rouge'
+			on_press:root.ref_Cache1.angle_Rotation1=root.ref_Cache1.angle_Rotation1-90	
+		Button:
+			text:'vert'
+			on_press:root.ref_Cache2.angle_Rotation2=root.ref_Cache2.angle_Rotation2-90
+		Button:
+			text:'bleu'
+			on_press:root.ref_Cache3.angle_Rotation3=root.ref_Cache3.angle_Rotation3-90
+		Button:
+			text:'jaune'
+			on_press:root.ref_Cache4.angle_Rotation4=root.ref_Cache4.angle_Rotation4-90
+
+<Cache1>:
+    angle_Rotation1: 0
+    RelativeLayout:
+	    canvas:
+		    Color:
+			    rgb:1,0,0
+            Rotate:
+                axis: 0,0,1
+                angle: root.angle_Rotation1
+                origin: self.center
+		    Rectangle:
+			    pos:self.width/3,0
+			    size:2*self.width/3,self.width/3
+		    Rectangle:
+			    pos:0,self.width/3
+			    size:2*self.width/3,2*self.width/3
+
+        
+		
+<Cache2>:
+	angle_Rotation2: 0
+	RelativeLayout:
+		canvas:
+			Color:
+				rgb:0,1,0
+			Rotate:
+                axis: 0,0,1
+                angle: root.angle_Rotation2
+                origin: self.center
+			Rectangle:
+				pos:0,0
+				size:self.width/3,self.width
+			Rectangle:
+				pos:self.width/3,0
+				size:self.width/3,self.width/3
+			Rectangle:
+				pos:2*self.width/3,0
+				size:self.width/3,self.width
+			
+			
+<Cache3>:
+	angle_Rotation3: 0
+	RelativeLayout:
+		canvas:
+			Color:
+				rgb:0,0,1
+			Rotate:
+                axis: 0,0,1
+                angle: root.angle_Rotation3
+                origin: self.center
+			Rectangle:
+				pos:0,0
+				size:self.width/3,self.width
+			Rectangle:
+				pos:self.width/3,self.width/3
+				size:self.width/3,self.width/3
+			Rectangle:
+				pos:2*self.width/3,0
+				size:self.width/3,self.width
+			
+<Cache4>:
+	angle_Rotation4: 0
+	RelativeLayout:
+		canvas:
+			Color:
+				rgb:1,1,0
+			Rotate:
+                axis: 0,0,1
+                angle: root.angle_Rotation4
+                origin: self.center
+			Rectangle:
+				pos:0,0
+				size:self.width/3,self.width/3
+			Rectangle:
+				pos:2*self.width/3,0
+				size:self.width/3,self.width/3
+			Rectangle:
+				pos:0,self.width/3
+				size:self.width,self.width/3
+			Rectangle:
+				pos:0,2*self.width/3
+				size:2*self.width/3,self.width/3	
